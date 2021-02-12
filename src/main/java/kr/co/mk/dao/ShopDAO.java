@@ -12,5 +12,6 @@ public interface ShopDAO {
 	public List<GoodsViewVo> list_first(@Param("c") int cateCode, int cateCodeRef);
 	//2차분류
 	public List<GoodsViewVo> list_second(@Param("c") int cateCode);
-	
+	//단일 상품 조회
+	public GoodsViewVo goodsView(int no);
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,5 +39,13 @@ public class ShopController {
 			model.addAttribute("list",list);
 		}
 		return "/shop/list";
+	}
+	
+	@RequestMapping("/view")
+	public String view(int no,Model model) {
+		ShopDAO dao =  sqlSession.getMapper(ShopDAO.class);
+		GoodsViewVo gv = dao.goodsView(no);
+		model.addAttribute("gv",gv);
+		return "/shop/view";
 	}
 }
