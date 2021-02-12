@@ -2,6 +2,8 @@ package kr.co.mk.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +22,21 @@ public class ShopController {
 	public SqlSession sqlSession;
 	
 	@RequestMapping("/list")
-	public String list(@RequestParam("c") int cateCode, @RequestParam("l") int level, Model model) {
+	public String list(HttpServletRequest request, Model model) {
 		ShopDAO dao =  sqlSession.getMapper(ShopDAO.class);
 		
-		List<GoodsViewVo> list = dao.list(cateCode);
-		model.addAttribute("list",list);
+		int cateCode =  Integer.parseInt(request.getParameter("c"));
+		int level = Integer.parseInt(request.getParameter("l"));
+		
+		int cateCodeRef = 0;
+		if(level == 1) {
+			cateCodeRef = cateCode;
+			List<GoodsViewVo> list = dao.list_first(cateCode,cateCodeRef);
+			model.addAttribute("list",list);
+		}else {
+			List<GoodsViewVo> list = dao.list_second(cateCode);
+			model.addAttribute("list",list);
+		}
 		return "/shop/list";
 	}
 }

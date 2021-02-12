@@ -6,10 +6,12 @@
 .gdsThumbImg{width:100px; height:100px; margin: 0px; }
 .gdsThumbImg img{width:100px; height:100px;}
 .goods{list-style: none;}
-.goodscon{width:700px; margin: auto; margin-top: 70px; padding-left: 50px;}
+.goodscon{width:850px; margin: auto; margin-top: 70px; padding-left: 130px;}
 .gdsNum{text-align: right;}
 .gdsThumbImg{text-align: center;}
 #no{display: none;}
+.col-md-4{width:250px; height:250px;}
+.thumbnail img{width:250px; height:200px;}
 </style>
 
 <script type="text/javascript">
@@ -22,6 +24,7 @@
 </script>
 <div class="container">
  <div class="goodscon">
+ <h2>상품목록</h2>
 	<div class="row">
 <c:forEach items="${list}" var="list">
   <div class="col-md-4">
