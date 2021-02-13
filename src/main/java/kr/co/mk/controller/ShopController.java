@@ -3,6 +3,7 @@ package kr.co.mk.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.mk.dao.ShopDAO;
 import kr.co.mk.vo.GoodsViewVo;
+import kr.co.mk.vo.MemberVo;
+import kr.co.mk.vo.ReplyListVo;
+import kr.co.mk.vo.ReplyVo;
 
 @Controller
 @RequestMapping("/shop/**")
@@ -46,6 +50,16 @@ public class ShopController {
 		ShopDAO dao =  sqlSession.getMapper(ShopDAO.class);
 		GoodsViewVo gv = dao.goodsView(no);
 		model.addAttribute("gv",gv);
+		
 		return "/shop/view";
 	}
+	
+//	@RequestMapping("/insert_reply")
+//	public String replyInsert(HttpSession session,int gdsNum,String userId,String repCon) {
+//		ShopDAO dao =  sqlSession.getMapper(ShopDAO.class);
+//		System.out.println(userId);
+//		
+//		dao.replyInsert(gdsNum,userId,repCon);
+//		return "redirect:/shop/view?no="+gdsNum;
+//	}
 }

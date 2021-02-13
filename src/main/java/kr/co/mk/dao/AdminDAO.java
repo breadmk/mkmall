@@ -18,4 +18,5 @@ public interface AdminDAO {
 	public GoodsViewVo goodsView(int no);
 	public void update_ok(GoodsVo vo);
 	public void delete(int no);
+	
 }
