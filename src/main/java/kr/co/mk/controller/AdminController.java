@@ -53,6 +53,7 @@ public class AdminController {
 		pageObject.setTotalRow(dao.getRow(pageObject));
 		List<GoodsViewVo> list = dao.goodsList(pageObject);
 		model.addAttribute("pageObject",pageObject);
+		System.out.println(pageObject);
 		System.out.println(list);
 		model.addAttribute("list",list);
 		return "/admin/goods/list";
