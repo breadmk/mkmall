@@ -30,7 +30,7 @@
  section.replyList div.userInfo .userName { font-size:24px; font-weight:bold; }
  section.replyList div.userInfo .date { color:#999; display:inline-block; margin-left:10px; }
  section.replyList div.replyContent { padding:10px; margin:20px 0; }
-
+section.replyList div.replyFooter button { font-size:14px; border: 1px solid #999; background:none; margin-right:10px; }
 </style>
  <script>
 //댓글 ajax
@@ -49,6 +49,10 @@ function replylist(){
 			     + "<span class='date'>" + repDate + "</span>"
 			     + "</div>"
 			     + "<div class='replyContent'>" + this.repCon + "</div>"
+			     + "<div class='replyFooter'>"
+			     + "<button type='button' class='modify' data-repNum='" + this.repNum + "'>수정</button>"
+			     + "<button type='button' class='delete' data-repNum='" + this.repNum + "'>삭제</button>"
+			     + "</div>"
 			     + "</li>"; 
 			});
 		  $("section.replyList ol").html(str);
@@ -194,15 +198,6 @@ function replylist(){
  
  <section class="replyList">
    <ol>
- <%-- <c:forEach items="${reply}" var="reply">
-   <li>
-      <div class="userInfo">
-       <span class="userName">${reply.userName}</span>
-       <span class="date"><fmt:formatDate value="${reply.repDate}" pattern="yyyy-MM-dd" /></span>
-      </div>
-      <div class="replyContent">${reply.repCon}</div>
-    </li>
-  </c:forEach> --%>
    </ol>  
  </section>
 </div>
